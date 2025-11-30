@@ -1,0 +1,11 @@
+[Unit]
+After=network.target
+
+[Service]
+ExecStart=python3 /home/jim/statusbot/spacebot.py
+WorkingDirectory=/home/jim/statusbot
+User=jim
+
+
+[Install]
+WantedBy=default.target

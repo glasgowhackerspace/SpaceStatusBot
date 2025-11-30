@@ -97,21 +97,30 @@ client = MyClient(intents=discord.Intents.default())
 
 @client.event
 async def on_message(message):
-    global status    
+    global status   
+    print("Status: ", status) 
+    print(message.content,"XX",str(message.content))
     if message.author == client.user:
         return
-    if status=="open":
-        print("Discord mention: Space open")
-        with canvas(device) as draw:
-            draw.text((20, 20), ip_addr, fill="white")
-            draw.text((20, 40), "Open", fill="white")        
-        await message.channel.send("Space open")
-    elif status=="closed":
-        print("Discord mention: Space closed")
-        with canvas(device) as draw:
-            draw.text((20, 20), ip_addr, fill="white")
-            draw.text((20, 40), "Closed", fill="white")           
-        await message.channel.send("Space closed")
+    print("message.author !=client.user")
+    # if (message.content.startswith('!status') or message.content.startswith('status')):
+    # if message.content=='status':
+    # if 'status' in message.content.lower():
+
+    if message.content=="!status":
+        print('if status=="open"') 
+        if status=="open":
+            print("Discord mention: Space open")
+            with canvas(device) as draw:
+                draw.text((20, 20), ip_addr, fill="white")
+                draw.text((20, 40), "Open", fill="white")        
+            await message.channel.send("Space open")
+        elif status=="closed":
+            print("Discord mention: Space closed")
+            with canvas(device) as draw:
+                draw.text((20, 20), ip_addr, fill="white")
+                draw.text((20, 40), "Closed", fill="white")           
+            await message.channel.send("Space closed")
 
 
 client.run(config_json["glashack token"])
