@@ -76,7 +76,7 @@ class MyClient(discord.Client):
                 with canvas(device) as draw:
                     draw.text((20, 20), ip_addr, fill="white")
                     draw.text((20, 40), "Open", fill="white")
-                await channel.send("Space open")
+                await channel.send("Space open 🟢")
         else:    #Pin high - space closed
             if status=="" or status=="open":
                 status="closed"
@@ -84,7 +84,7 @@ class MyClient(discord.Client):
                 with canvas(device) as draw:
                     draw.text((20, 20), ip_addr, fill="white")
                     draw.text((20, 40), "Closed", fill="white")                   
-                await channel.send("Space closed")
+                await channel.send("Space closed 🔴")
 
     @my_background_task.before_loop
     async def before_my_task(self):
